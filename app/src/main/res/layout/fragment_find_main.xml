@@ -1,0 +1,154 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TableRow android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/origin"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/origin_required"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/required"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/origin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/et_background"
+                android:ellipsize="marquee"
+                android:padding="5dp"
+                android:singleLine="true" />
+
+        </TableRow>
+
+        <TableRow android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/destiny"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/destiny_required"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/required"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/destiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/et_background"
+                android:ellipsize="marquee"
+                android:padding="5dp"
+                android:singleLine="true" />
+
+        </TableRow>
+
+        <TableRow android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_for_round_travel"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/date_round_required"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/required"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/date_round"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/et_background"
+                android:padding="5dp" />
+
+        </TableRow>
+
+        <TableRow android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/roundtrip"
+                android:textColor="@android:color/white" />
+
+            <TextView />
+
+            <CheckBox
+                android:id="@+id/roundtrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_date_trip"
+            android:paddingTop="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_for_trip_travel"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/date_trip_required"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/required"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/date_trip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/et_background"
+                android:padding="5dp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</ScrollView>

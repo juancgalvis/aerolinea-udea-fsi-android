@@ -1,0 +1,23 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_title">
+
+        <ListPreference
+            android:defaultValue="cc"
+            android:entries="@array/pref_doc_type_entries"
+            android:entryValues="@array/pref_doc_type_entry_values"
+            android:key="doc_type"
+            android:title="@string/pref_doc_type" />
+
+        <EditTextPreference
+            android:key="doc_num"
+            android:title="@string/pref_doc_num" />
+
+        <EditTextPreference
+            android:inputType="textCapWords"
+            android:key="first_lastname"
+            android:title="@string/pref_first_lastname" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

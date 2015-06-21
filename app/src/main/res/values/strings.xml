@@ -1,0 +1,47 @@
+<resources>
+    <!--Strings for activity main-->
+    <string name="app_name">Aerolinea FSI</string>
+    <string name="hello_world">Descripción</string>
+    <string name="title_main_welcome">BIENVENIDO</string>
+    <array name="options_main_activity">
+        <item>Consultar Vuelos</item>
+        <item>Mis Vuelos</item>
+        <item>Estadística</item>
+        <item>Ajustes</item>
+    </array>
+
+    <!--Strings for activity my flights-->
+    <string name="title_activity_my_flights">Mis Vuelos</string>
+    <string name="subtitle_activity_my_flights">Realiza chekin, busca tu pase de abordar</string>
+
+    <!--Strings for activity statisctics-->
+    <string name="title_activity_statisctics">Estadística</string>
+    <string name="subtitle_activity_statisctics">Consulta aquí las ciudades más visitadas</string>
+
+    <!--Strings for activity setings-->
+    <string name="title_activity_settings">Ajustes</string>
+    <string name="subtitle_activity_settings">Registra aquí tus datos personales</string>
+
+    <!--Strings for activity find-->
+    <string name="title_activity_find">Consultar Vuelos</string>
+    <string name="subtitle_activity_find">Te ofrecemos los mejores destinos</string>
+    <string name="subtitle_select_round_flight_find">Selecciona el vuelo de ida</string>
+    <string name="required_fields_find">Diligencie los campos indicados</string>
+    <string name="bad_round_date">La fecha ingresada debe ser mayor o igual que la fecha actual</string>
+    <string name="bad_trip_date">La fecha ingresada debe ser mayor o igual que la fecha de ida</string>
+    <string name="should_round_date_first">Debe seleccionar primero la fecha de ida</string>
+    <string name="origin">Origen</string>
+    <string name="destiny">Destino</string>
+    <string name="date_for_round_travel">Fecha de ida</string>
+    <string name="date_for_trip_travel">Fecha de regreso</string>
+    <string name="select_origin_city">Seleccione la ciudad de origen</string>
+    <string name="select_destiny_city">Seleccione la ciudad de destino</string>
+    <string name="select_round_date">Seleccione la fecha de ida</string>
+    <string name="select_trip_date">Seleccione la fecha de regreso</string>
+    <string name="roundtrip">Ida y Vuelta</string>
+    <string name="required">(*)</string>
+    <string name="title_activity_round_flight">RoundFlightActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="next">Siguiente</string>
+    <string name="back">Atrás</string>
+</resources>

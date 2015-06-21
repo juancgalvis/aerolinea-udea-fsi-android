@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/naranja_medio</item>
+        <item name="colorAccent">@color/naranja_oscuro</item>
+    </style>
+
+    <style name="TextGrisLarge">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+</resources>

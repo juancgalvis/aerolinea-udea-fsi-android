@@ -1,0 +1,19 @@
+<resources>
+    <string name="pref_title">Información Personal</string>
+    <string name="pref_doc_type">Tipo de Documento</string>
+    <string name="pref_doc_num">Número de Documento</string>
+    <string name="pref_first_lastname">Primer Apellido</string>
+
+    <array name="pref_doc_type_entries">
+        <item>Cédula de Ciudadanía</item>
+        <item>Cédula de Estranjería</item>
+        <item>Pasaporte</item>
+    </array>
+
+    <array name="pref_doc_type_entry_values">
+        <item>cc</item>
+        <item>ce</item>
+        <item>pp</item>
+    </array>
+
+</resources>
