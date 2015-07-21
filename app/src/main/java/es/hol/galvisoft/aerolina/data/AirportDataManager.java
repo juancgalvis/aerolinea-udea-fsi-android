@@ -46,17 +46,17 @@ public class AirportDataManager extends DataManager {
 
     private Airport getAirportFromCursor(Cursor cursor) {
         Airport row = new Airport();
-        row.setId(cursor.getInt(COL_ID));
+        row.setId(cursor.getString(COL_ID));
         row.setName(cursor.getString(COL_NAME));
         row.setCity(cursor.getString(COL_CITY));
         row.setIata(cursor.getString(COL_IATA));
         return row;
     }
 
-    public Airport getAirport(Integer id) {
+    public Airport getAirport(String id) {
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMNS[COL_ID] + " = ?", new String[]{String.valueOf(id)});
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMNS[COL_ID] + " = ?", new String[]{id});
 
         Airport row = null;
 

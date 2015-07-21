@@ -4,24 +4,23 @@ package es.hol.galvisoft.aerolina.model;
  * Creado por Juan Carlos el dia 27/05/2015.
  */
 public class Airport {
-    private int id;
-    private String name, iata, city;
+    private String id, name, iata, city;
 
     public Airport() {
     }
 
-    public Airport(int id, String name, String iata, String city) {
+    public Airport(String id, String name, String iata, String city) {
         this.id = id;
         this.name = name;
         this.iata = iata;
         this.city = city;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

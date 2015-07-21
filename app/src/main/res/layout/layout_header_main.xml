@@ -3,7 +3,7 @@
     android:id="@+id/barra_titulo_llyRegresarAtras"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/naranja_medio"
+    android:background="@color/azul_medio"
     android:orientation="horizontal">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_marginStart="20dp"
         android:contentDescription="@string/hello_world"
         android:src="@drawable/back_button"
-        android:onClick="close"
+        android:onClick="back"
         android:visibility="gone" />
 
     <TextView

@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="10dp"
-        android:background="@color/naranja_oscuro" />
+        android:background="@color/azul_oscuro" />
 
     <include layout="@layout/layout_header_main" />
 
@@ -26,42 +26,6 @@
             android:id="@+id/fragment"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <Button
-            android:id="@+id/back_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/bar_white"
-            android:onClick="back"
-            android:padding="10dp"
-            android:text="@string/back"
-            android:textColor="@color/gris_oscuro" />
-
-        <Button
-            android:id="@+id/next_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/bar_white"
-            android:onClick="next"
-            android:padding="10dp"
-            android:text="@string/next"
-            android:textColor="@color/gris_oscuro" />
 
     </LinearLayout>
 

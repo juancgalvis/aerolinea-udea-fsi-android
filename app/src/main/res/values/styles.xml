@@ -2,8 +2,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/naranja_medio</item>
-        <item name="colorAccent">@color/naranja_oscuro</item>
+        <item name="colorPrimary">@color/azul_medio</item>
+        <item name="colorAccent">@color/azul_oscuro</item>
     </style>
 
     <style name="TextGrisLarge">

@@ -29,6 +29,7 @@ public class AirportAdapter extends ArrayAdapter<Airport> implements AdapterView
         }
         Airport a = getItem(position);
         ((TextView) convertView).setText(a.getIata() + "-" + a.getName() + ", " + a.getCity());
+        convertView.setPadding(10, 10, 10, 10);
         return convertView;
     }
 

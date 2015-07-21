@@ -9,22 +9,34 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+
+import java.util.Date;
+
 import es.hol.galvisoft.aerolina.R;
 import es.hol.galvisoft.aerolina.fragments.find.MainFragment;
+import es.hol.galvisoft.aerolina.fragments.find.ReserveFragment;
 import es.hol.galvisoft.aerolina.fragments.find.SelectRoundFlightFragment;
+import es.hol.galvisoft.aerolina.fragments.find.SelectTripFlightFragment;
 
 public class FindActivity extends Activity {
     public static final int MAIN_FRAGMENT = 0;
     public static final int SELECT_ROUND_FLIGHT_FRAGMENT = 1;
+    public static final int SELECT_TRIP_FLIGHT_FRAGMENT = 2;
+    public static final int RESERVE_FRAGMENT = 3;
 
     private MainFragment mainFragment;
     private SelectRoundFlightFragment selectRoundFlightFragment;
+    private SelectTripFlightFragment selectTripFlightFragment;
+    private ReserveFragment reserveFragment;
+    private int classType;
 
     private TextView subtitle;
 
-    private String roundDate, tripDate;
+    private Date roundDate, tripDate;
     private int currentFragment;
-    private long roundAirport, tripAirport;
+    private String roundAirport, tripAirport;
+    private ParseObject roundFlight, tripFlight;
     private boolean isRoundTrip;
 
     @Override
@@ -37,7 +49,7 @@ public class FindActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            setFragment(currentFragment - 1);
+            back(null);
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -53,12 +65,29 @@ public class FindActivity extends Activity {
         setFragment(MAIN_FRAGMENT);
     }
 
-    public void close(View view) {
-        finish();
-    }
-
     public void back(View view) {
-        setFragment(currentFragment - 1);
+        switch (currentFragment) {
+            case MAIN_FRAGMENT: {
+                finish();
+                break;
+            }
+            case SELECT_ROUND_FLIGHT_FRAGMENT: {
+                setFragment(MAIN_FRAGMENT);
+                break;
+            }
+            case SELECT_TRIP_FLIGHT_FRAGMENT: {
+                setFragment(SELECT_ROUND_FLIGHT_FRAGMENT);
+                break;
+            }
+            case RESERVE_FRAGMENT: {
+                if (isRoundTrip) {
+                    setFragment(SELECT_TRIP_FLIGHT_FRAGMENT);
+                } else {
+                    setFragment(SELECT_ROUND_FLIGHT_FRAGMENT);
+                }
+                break;
+            }
+        }
     }
 
     public void next(View view) {
@@ -70,17 +99,24 @@ public class FindActivity extends Activity {
                     isRoundTrip = mainFragment.isRoundTrip();
                     roundDate = mainFragment.getDateRound();
                     tripDate = mainFragment.getDateTrip();
-                    setFragment(currentFragment + 1);
+                    classType = mainFragment.getClassType();
+                    setFragment(SELECT_ROUND_FLIGHT_FRAGMENT);
                 }
                 break;
             }
             case SELECT_ROUND_FLIGHT_FRAGMENT: {
                 if (selectRoundFlightFragment.next()) {
-                    /*roundAirport = mainFragment.getOriginCity();
-                    tripAirport = mainFragment.getDestinyCity();
-                    isRoundTrip = mainFragment.isRoundTrip();
-                    roundDate = mainFragment.getDateRound();
-                    tripDate = mainFragment.getDateTrip();*/
+                    if (isRoundTrip) {
+                        setFragment(SELECT_TRIP_FLIGHT_FRAGMENT);
+                    } else {
+                        setFragment(RESERVE_FRAGMENT);
+                    }
+                }
+                break;
+            }
+            case SELECT_TRIP_FLIGHT_FRAGMENT: {
+                if (selectTripFlightFragment.next()) {
+                    setFragment(RESERVE_FRAGMENT);
                 }
                 break;
             }
@@ -111,16 +147,31 @@ public class FindActivity extends Activity {
                 subtitle.setText(R.string.subtitle_select_round_flight_find);
                 break;
             }
-
+            case SELECT_TRIP_FLIGHT_FRAGMENT: {
+                if (selectTripFlightFragment == null) {
+                    selectTripFlightFragment = new SelectTripFlightFragment();
+                }
+                ft.replace(R.id.fragment, selectTripFlightFragment);
+                subtitle.setText(R.string.subtitle_select_trip_flight_find);
+                break;
+            }
+            case RESERVE_FRAGMENT: {
+                if (reserveFragment == null) {
+                    reserveFragment = new ReserveFragment();
+                }
+                ft.replace(R.id.fragment, reserveFragment);
+                subtitle.setText(R.string.subtitle_confirm_reservation_find);
+                break;
+            }
         }
         ft.commit();
     }
 
-    public void setOriginCity(long code, String name) {
+    public void setOriginCity(String code, String name) {
         mainFragment.setOriginCity(code, name);
     }
 
-    public void setDestinyCity(long code, String name) {
+    public void setDestinyCity(String code, String name) {
         mainFragment.setDestinyCity(code, name);
     }
 
@@ -132,23 +183,47 @@ public class FindActivity extends Activity {
         mainFragment.setDateTrip(year, monthOfYear, dayOfMonth);
     }
 
-    public String getRoundDate() {
+    public Date getRoundDate() {
         return roundDate;
     }
 
-    public long getRoundAirport() {
+    public String getRoundAirport() {
         return roundAirport;
     }
 
-    public String getTripDate() {
+    public Date getTripDate() {
         return tripDate;
     }
 
-    public long getTripAirport() {
+    public String getTripAirport() {
         return tripAirport;
     }
 
     public boolean isRoundTrip() {
         return isRoundTrip;
+    }
+
+    public ParseObject getRoundFlight() {
+        return roundFlight;
+    }
+
+    public void setRoundFlight(ParseObject roundFlight) {
+        this.roundFlight = roundFlight;
+    }
+
+    public ParseObject getTripFlight() {
+        return tripFlight;
+    }
+
+    public void setTripFlight(ParseObject tripFlight) {
+        this.tripFlight = tripFlight;
+    }
+
+    public int getClassType() {
+        return classType;
+    }
+
+    public void setClassType(int classType) {
+        this.classType = classType;
     }
 }

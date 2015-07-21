@@ -27,7 +27,7 @@ public class StatisticsActivity extends Activity {
         findViewById(R.id.back).setVisibility(View.VISIBLE);
     }
 
-    public void close(View view){
+    public void back(View view){
         finish();
     }
 }

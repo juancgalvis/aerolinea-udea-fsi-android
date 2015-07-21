@@ -6,13 +6,14 @@
     <array name="options_main_activity">
         <item>Consultar Vuelos</item>
         <item>Mis Vuelos</item>
+        <item>Mis Pases de Abordar</item>
         <item>Estadística</item>
         <item>Ajustes</item>
     </array>
 
     <!--Strings for activity my flights-->
     <string name="title_activity_my_flights">Mis Vuelos</string>
-    <string name="subtitle_activity_my_flights">Realiza chekin, busca tu pase de abordar</string>
+    <string name="subtitle_activity_my_flights">Realiza aquí tu chekin</string>
 
     <!--Strings for activity statisctics-->
     <string name="title_activity_statisctics">Estadística</string>
@@ -20,7 +21,7 @@
 
     <!--Strings for activity setings-->
     <string name="title_activity_settings">Ajustes</string>
-    <string name="subtitle_activity_settings">Registra aquí tus datos personales</string>
+    <string name="subtitle_activity_settings">Gestiona aquí tu usuario</string>
 
     <!--Strings for activity find-->
     <string name="title_activity_find">Consultar Vuelos</string>
@@ -38,10 +39,27 @@
     <string name="select_destiny_city">Seleccione la ciudad de destino</string>
     <string name="select_round_date">Seleccione la fecha de ida</string>
     <string name="select_trip_date">Seleccione la fecha de regreso</string>
-    <string name="roundtrip">Ida y Vuelta</string>
+    <string name="roundtrip">Ida y Regreso</string>
     <string name="required">(*)</string>
     <string name="title_activity_round_flight">RoundFlightActivity</string>
     <string name="action_settings">Settings</string>
     <string name="next">Siguiente</string>
     <string name="back">Atrás</string>
+    <string name="invertir">Invertir ciudades</string>
+    <string name="subtitle_select_trip_flight_find">Selecciona el vuelo de regreso</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="subtitle_confirm_reservation_find">Por favor verifique los datos de la reserva</string>
+    <string name="time_for_round_travel">Hora salida</string>
+    <string name="time_for_trip_travel">Hora de llegada</string>
+    <string name="valor">Precio (COP)</string>
+    <string name="total">Total (COP)</string>
+    <string name="find">Consultar</string>
+    <string name="classType">Clase</string>
+    <string name="title_activity_boarding_pass">BoardingPassActivity</string>
+    <string name="title_activity_my_boarding_pass">Mis Pases de Abordar</string>
+    <string name="subtitle_activity_my_boarding_pass">Encuentra aquí tus pases de abordar</string>
+    <string name="subtitle_activity_my_flights_select_seat">Seleccione un asiento</string>
 </resources>

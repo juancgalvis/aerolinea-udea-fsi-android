@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -32,9 +34,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private TextView tvOriginCity, tvDestinyCity, tvRoundDate, tvTripDate;
     private CheckBox cbRoundTrip;
     private List<Airport> airports;
-    private long roundAirport, tripAirport;
+    private String roundAirport, tripAirport;
     private String originName, destinationName, roundDate, tripDate;
     private Activity context;
+    private Date dtRound, dtTrip;
+    private int classType;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 selectOrigin();
                 break;
             }
+            case R.id.bt_exchange: {
+                exchange();
+                break;
+            }
         }
     }
 
@@ -88,6 +96,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         tvRoundDate.setOnClickListener(this);
         tvTripDate = (TextView) context.findViewById(R.id.date_trip);
         tvTripDate.setOnClickListener(this);
+        context.findViewById(R.id.bt_exchange).setOnClickListener(this);
         final TableRow tableRow = (TableRow) context.findViewById(R.id.row_date_trip);
         cbRoundTrip = (CheckBox) context.findViewById(R.id.roundtrip);
         cbRoundTrip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -123,7 +132,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void selectDestiny() {
         List<Airport> destAirports = new ArrayList<>();
         for (Airport airport : airports) {
-            if (airport.getId() != roundAirport) {
+            if (!airport.getIata().equalsIgnoreCase(roundAirport)) {
                 destAirports.add(airport);
             }
         }
@@ -155,28 +164,28 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         dialogFragment.show(context.getFragmentManager(), "cities");
     }
 
-    public void setOriginCity(long code, String name) {
-        this.originName = name;
+    public void setOriginCity(String code, String name) {
+            this.originName = name;
         this.tvOriginCity.setText(name);
-        this.tvOriginCity.setContentDescription(Long.toString(code));
+        this.tvOriginCity.setContentDescription(code);
         roundAirport = code;
-        if (roundAirport == tripAirport) {
-            setDestinyCity(0, null);
+        if (roundAirport.equalsIgnoreCase(tripAirport)) {
+            setDestinyCity(null, null);
         }
     }
 
-    public long getOriginCity() {
+    public String getOriginCity() {
         return roundAirport;
     }
 
-    public void setDestinyCity(long code, String name) {
+    public void setDestinyCity(String code, String name) {
         this.destinationName = name;
         this.tvDestinyCity.setText(name);
-        this.tvDestinyCity.setContentDescription(Long.toString(code));
+        this.tvDestinyCity.setContentDescription(code);
         tripAirport = code;
     }
 
-    public long getDestinyCity() {
+    public String getDestinyCity() {
         return tripAirport;
     }
 
@@ -192,13 +201,14 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             this.roundDate = formatearFecha(year, monthOfYear, dayOfMonth);
             tvRoundDate.setText(this.roundDate);
             tvTripDate.setText(null);
+            dtRound = new Date(roundDate.getTimeInMillis());
         } else {
             showToast(getResources().getString(R.string.bad_round_date));
         }
     }
 
-    public String getDateRound() {
-        return tvRoundDate.getText().toString();
+    public Date getDateRound() {
+        return dtRound;
     }
 
     public void setDateTrip(int year, int monthOfYear, int dayOfMonth) {
@@ -208,13 +218,14 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         if (roundDate.getTimeInMillis() <= tripDate.getTimeInMillis()) {
             this.tripDate = formatearFecha(year, monthOfYear, dayOfMonth);
             tvTripDate.setText(this.tripDate);
+            dtTrip = new Date(tripDate.getTimeInMillis());
         } else {
             showToast(getResources().getString(R.string.bad_trip_date));
         }
     }
 
-    public String getDateTrip() {
-        return tvTripDate.getText().toString();
+    public Date getDateTrip() {
+        return dtTrip;
     }
 
     public boolean next() {
@@ -261,8 +272,25 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         return (year + "-" + mes + "-" + dia);
     }
 
+    private void exchange() {
+        String auxLong = roundAirport;
+        String auxString = tvOriginCity.getText().toString();
+        roundAirport = tripAirport;
+        tvOriginCity.setText(tvDestinyCity.getText());
+        tripAirport = auxLong;
+        tvDestinyCity.setText(auxString);
+    }
+
     private void showToast(String resource) {
         Toast.makeText(context, resource, Toast.LENGTH_SHORT).show();
     }
 
+    public int getClassType() {
+        Spinner spinner = (Spinner) getView().findViewById(R.id.class_type);
+        return spinner.getSelectedItemPosition();
+    }
+
+    public void setClassType(int classType) {
+        this.classType = classType;
+    }
 }

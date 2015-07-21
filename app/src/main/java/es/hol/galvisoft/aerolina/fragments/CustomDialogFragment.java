@@ -112,7 +112,7 @@ public class CustomDialogFragment extends DialogFragment implements TextWatcher 
         return builder.create();
     }
 
-    public void onItemClick(long id, String airport) {
+    public void onItemClick(String id, String airport) {
         switch (type) {
             case ORIGIN_CITY: {
                 ((FindActivity) getActivity()).setOriginCity(id, airport);
@@ -145,7 +145,7 @@ public class CustomDialogFragment extends DialogFragment implements TextWatcher 
 
     private void filterCities(String filter) {
         if (filter == null) {
-            AirportAdapter airportAdapter = new AirportAdapter(this, R.layout.item_airports, airports);
+            AirportAdapter airportAdapter = new AirportAdapter(this, R.layout.item_seat, airports);
             lvAirports.setAdapter(airportAdapter);
             lvAirports.setOnItemClickListener(airportAdapter);
         } else {
@@ -157,7 +157,7 @@ public class CustomDialogFragment extends DialogFragment implements TextWatcher 
                     filterAirports.add(a);
                 }
             }
-            AirportAdapter airportAdapter = new AirportAdapter(this, R.layout.item_airports, filterAirports);
+            AirportAdapter airportAdapter = new AirportAdapter(this, R.layout.item_seat, filterAirports);
             lvAirports.setAdapter(airportAdapter);
             lvAirports.setOnItemClickListener(airportAdapter);
         }

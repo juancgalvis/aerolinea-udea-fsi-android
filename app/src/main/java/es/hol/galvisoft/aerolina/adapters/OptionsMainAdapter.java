@@ -12,10 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.hol.galvisoft.aerolina.R;
+import es.hol.galvisoft.aerolina.activities.BoardingPassActivity;
 import es.hol.galvisoft.aerolina.activities.FindActivity;
 import es.hol.galvisoft.aerolina.activities.MyFlightsActivity;
-import es.hol.galvisoft.aerolina.activities.SettingsActivity;
 import es.hol.galvisoft.aerolina.activities.StatisticsActivity;
+import es.hol.galvisoft.aerolina.activities.UserActivity;
 
 /**
  * Creado por Juan Carlos el dia 13/05/2015.
@@ -23,7 +24,12 @@ import es.hol.galvisoft.aerolina.activities.StatisticsActivity;
 public class OptionsMainAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
     private String options[];
-    private int icons[] = new int[]{R.mipmap.ic_find_main, R.mipmap.ic_my_flights_main, R.mipmap.ic_statistics_main, R.mipmap.ic_settings_main};
+    private int icons[] = new int[]{
+            R.mipmap.ic_find_main,
+            R.mipmap.ic_my_flights_main,
+            R.mipmap.ic_pases_main,
+            R.mipmap.ic_statistics_main,
+            R.mipmap.ic_settings_main};
     private Context context;
 
     public OptionsMainAdapter(Activity activity) {
@@ -70,11 +76,15 @@ public class OptionsMainAdapter extends BaseAdapter implements AdapterView.OnIte
                 break;
             }
             case 2: {
-                intent = new Intent(context, StatisticsActivity.class);
+                intent = new Intent(context, BoardingPassActivity.class);
                 break;
             }
             case 3: {
-                intent = new Intent(context, SettingsActivity.class);
+                intent = new Intent(context, StatisticsActivity.class);
+                break;
+            }
+            case 4: {
+                intent = new Intent(context, UserActivity.class);
                 break;
             }
             default: {
