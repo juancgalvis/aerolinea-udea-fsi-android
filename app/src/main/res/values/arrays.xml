@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="documents_types">
+        <item>Cédula de Ciudadania</item>
+        <item>Cédula de Extranjería</item>
+        <item>Pasaporte</item>
+        <item>Tarjeta de Identidad</item>
+    </string-array>
+    <string-array name="class_types">
+        <item>Económica</item>
+        <item>Corriente</item>
+        <item>Ejecutiva</item>
+    </string-array>
+</resources>

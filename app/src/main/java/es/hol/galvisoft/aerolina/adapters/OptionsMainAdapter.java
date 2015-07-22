@@ -3,6 +3,7 @@ package es.hol.galvisoft.aerolina.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,8 +81,10 @@ public class OptionsMainAdapter extends BaseAdapter implements AdapterView.OnIte
                 break;
             }
             case 3: {
-                intent = new Intent(context, StatisticsActivity.class);
-                break;
+                Uri uriUrl = Uri.parse("https://aerolineafsi.herokuapp.com/#/cities");
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                context.startActivity(launchBrowser);
+                return;
             }
             case 4: {
                 intent = new Intent(context, UserActivity.class);
